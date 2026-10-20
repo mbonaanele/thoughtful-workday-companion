@@ -99,6 +99,9 @@
   .btn-ghost {
     @apply inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition hover:bg-accent hover:text-foreground disabled:opacity-40;
   }
+  .banner-btn {
+    @apply inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-primary-foreground transition hover:bg-primary-foreground/15;
+  }
   .disclaimer {
     @apply flex items-start gap-3 rounded-xl border border-warning/40 bg-warning/10 p-4;
   }
