@@ -1,24 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Mail } from "lucide-react";
+import { ToolPage } from "@/components/ToolPage";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Smart Email Generator — AI Workplace Productivity Assistant" },
+      { name: "description", content: "Generate professional emails in formal, friendly, or persuasive tones with AI." },
+      { property: "og:title", content: "Smart Email Generator — AI Workplace" },
+      { property: "og:description", content: "Generate professional emails in any tone with AI." },
+    ],
+  }),
+  component: () => (
+    <ToolPage
+      tool="email"
+      title="Smart Email Generator"
+      description="Describe what your email is about, pick a tone, and get a polished draft."
+      icon={<Mail className="h-6 w-6" />}
+      inputLabel="What is the email about?"
+      placeholder="e.g. Ask my manager for Friday off next week to attend a family event; I'll hand over the client report on Thursday."
+      buttonLabel="Generate Email"
+      options={{ label: "Tone", values: ["Formal", "Friendly", "Persuasive"], prefix: "Tone" }}
+    />
+  ),
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
