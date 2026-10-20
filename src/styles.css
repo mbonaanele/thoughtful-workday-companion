@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -19,6 +19,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -34,35 +35,37 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.99 0.004 350);
-  --foreground: oklch(0.2 0.02 350);
+  --radius: 1rem;
+  --background: oklch(0.985 0.003 350);
+  --foreground: oklch(0.24 0.03 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 350);
+  --card-foreground: oklch(0.24 0.03 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 350);
-  --primary: oklch(0.6 0.2 350);
-  --primary-glow: oklch(0.68 0.16 320);
-  --primary-foreground: oklch(0.99 0.005 350);
-  --secondary: oklch(0.95 0.02 350);
-  --secondary-foreground: oklch(0.3 0.04 350);
-  --muted: oklch(0.95 0.015 350);
-  --muted-foreground: oklch(0.5 0.02 350);
-  --accent: oklch(0.94 0.035 350);
-  --accent-foreground: oklch(0.35 0.08 350);
-  --destructive: oklch(0.6 0.2 25);
+  --popover-foreground: oklch(0.24 0.03 260);
+  --primary: oklch(0.6 0.13 5);
+  --primary-glow: oklch(0.76 0.09 20);
+  --primary-foreground: oklch(0.99 0.004 350);
+  --secondary: oklch(0.965 0.006 260);
+  --secondary-foreground: oklch(0.3 0.03 260);
+  --muted: oklch(0.965 0.005 260);
+  --muted-foreground: oklch(0.5 0.025 260);
+  --accent: oklch(0.955 0.025 10);
+  --accent-foreground: oklch(0.45 0.12 5);
+  --destructive: oklch(0.58 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --warning: oklch(0.62 0.13 75);
-  --border: oklch(0.9 0.02 350);
-  --input: oklch(0.9 0.02 350);
-  --ring: oklch(0.6 0.2 350);
+  --warning: oklch(0.62 0.12 60);
+  --border: oklch(0.92 0.008 260);
+  --input: oklch(0.91 0.01 260);
+  --ring: oklch(0.6 0.13 5);
   --gradient-brand: linear-gradient(135deg, var(--primary), var(--primary-glow));
-  --shadow-glow: 0 10px 30px -12px color-mix(in oklab, var(--primary) 35%, transparent);
+  --gradient-banner: linear-gradient(120deg, oklch(0.95 0.035 10) 0%, oklch(0.975 0.02 340) 45%, oklch(0.985 0.01 300) 100%);
+  --shadow-soft: 0 1px 2px oklch(0.24 0.03 260 / 0.04), 0 12px 32px -12px oklch(0.24 0.03 260 / 0.12);
+  --shadow-glow: 0 10px 28px -12px color-mix(in oklab, var(--primary) 45%, transparent);
 }
 
-@utility bg-gradient-brand {
-  background-image: var(--gradient-brand);
-}
+@utility bg-gradient-brand { background-image: var(--gradient-brand); }
+@utility bg-gradient-banner { background-image: var(--gradient-banner); }
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
 
 @layer base {
   * { border-color: var(--color-border); }
@@ -70,39 +73,35 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    background-image: radial-gradient(60rem 30rem at 100% -10%, color-mix(in oklab, var(--primary) 8%, transparent), transparent);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(50rem 28rem at 90% -10%, color-mix(in oklab, var(--primary-glow) 18%, transparent), transparent),
+      radial-gradient(40rem 24rem at -10% 30%, color-mix(in oklab, var(--primary) 7%, transparent), transparent);
     background-attachment: fixed;
   }
   select option { background: var(--color-card); }
 }
 
 @layer components {
-  .sidebar {
-    @apply fixed inset-y-0 left-0 z-40 flex w-72 flex-col border-r border-border bg-card transition-transform duration-200;
-  }
-  .nav-link {
-    @apply flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground;
-  }
-  .nav-link-active {
-    @apply bg-primary/15 font-medium text-primary hover:bg-primary/20 hover:text-primary;
+  .glass {
+    @apply rounded-2xl border border-card/70 bg-card/70 backdrop-blur-xl;
+    box-shadow: var(--shadow-soft);
   }
   .panel {
-    @apply rounded-xl border border-border bg-card p-5 shadow-lg;
+    @apply flex flex-col gap-4 rounded-2xl border border-card/70 bg-card/70 p-6 backdrop-blur-xl;
+    box-shadow: var(--shadow-soft);
   }
   .field {
-    @apply w-full resize-y rounded-lg border border-input bg-background px-3 py-2.5 text-foreground outline-none transition placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring/30;
+    @apply w-full resize-y rounded-xl border border-input bg-card px-4 py-3 text-foreground outline-none transition placeholder:text-muted-foreground focus:border-ring focus:ring-4 focus:ring-ring/15;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-brand px-5 py-3 font-semibold text-primary-foreground transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5 hover:brightness-105 disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50;
     box-shadow: var(--shadow-glow);
   }
   .btn-ghost {
-    @apply inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition hover:bg-accent hover:text-foreground disabled:opacity-40;
+    @apply inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-muted-foreground transition hover:bg-accent hover:text-accent-foreground disabled:opacity-40;
   }
-  .banner-btn {
-    @apply inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-primary-foreground transition hover:bg-primary-foreground/15;
-  }
-  .disclaimer {
-    @apply flex items-start gap-3 rounded-xl border border-warning/40 bg-warning/10 p-4;
+  .icon-chip {
+    @apply inline-flex items-center justify-center rounded-xl bg-accent text-primary;
   }
 }
