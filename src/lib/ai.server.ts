@@ -16,7 +16,7 @@ export async function handleGenerate(request: Request) {
   const { tool, input, option } = (await request.json()) as { tool: string; input: string; option?: string };
   const system = PROMPTS[tool];
   if (!system || !input?.trim()) return new Response("Invalid request", { status: 400 });
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env["LOVABLE_API_KEY"];
   if (!apiKey) return new Response("AI is not configured.", { status: 500 });
 
   const provider = createOpenAI({
