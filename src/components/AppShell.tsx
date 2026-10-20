@@ -38,8 +38,8 @@ export function AppShell({ children }: { children: ReactNode }) {
       {open && <div className="fixed inset-0 z-30 bg-background/70 md:hidden" onClick={() => setOpen(false)} />}
 
       <div className="flex min-w-0 flex-1 flex-col md:pl-72">
-        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-border bg-background/80 px-4 py-3 backdrop-blur md:hidden">
-          <button aria-label="Toggle menu" onClick={() => setOpen(!open)} className="btn-ghost">
+        <header className="sticky top-0 z-20 flex items-center gap-3 bg-gradient-brand px-4 py-3 text-primary-foreground shadow-sm">
+          <button aria-label="Toggle menu" onClick={() => setOpen(!open)} className="banner-btn md:hidden">
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
           <span className="font-display font-semibold">AI Workplace</span>
