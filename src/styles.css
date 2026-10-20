@@ -88,7 +88,8 @@
     box-shadow: var(--shadow-soft);
   }
   .panel {
-    @apply glass flex flex-col gap-4 p-6;
+    @apply flex flex-col gap-4 rounded-2xl border border-card/70 bg-card/70 p-6 backdrop-blur-xl;
+    box-shadow: var(--shadow-soft);
   }
   .field {
     @apply w-full resize-y rounded-xl border border-input bg-card px-4 py-3 text-foreground outline-none transition placeholder:text-muted-foreground focus:border-ring focus:ring-4 focus:ring-ring/15;
