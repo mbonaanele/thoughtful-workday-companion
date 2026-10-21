@@ -35,6 +35,9 @@
   --color-sidebar: var(--card);
   --color-sidebar-foreground: var(--foreground);
   --color-sidebar-border: var(--border);
+  --color-sidebar-accent: var(--accent);
+  --color-sidebar-accent-foreground: var(--accent-foreground);
+  --color-sidebar-ring: var(--ring);
 }
 
 :root {
