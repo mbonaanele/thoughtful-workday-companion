@@ -4,6 +4,7 @@ import { Bell, Flower2, ShieldCheck } from "lucide-react";
 
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { FloatingChat } from "@/components/FloatingChat";
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
@@ -46,6 +47,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               </p>
             </div>
           </footer>
+          <FloatingChat />
         </SidebarInset>
       </div>
     </SidebarProvider>
