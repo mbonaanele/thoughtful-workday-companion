@@ -3,6 +3,7 @@ import { Mail } from "lucide-react";
 import { ToolPage } from "@/components/ToolPage";
 
 export const Route = createFileRoute("/email")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Smart Email Generator — AI Workplace" },

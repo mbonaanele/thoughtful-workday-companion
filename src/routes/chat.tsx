@@ -4,6 +4,7 @@ import { BackLink } from "@/components/BackLink";
 import { ChatPanel } from "@/components/ChatPanel";
 
 export const Route = createFileRoute("/chat")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "AI Chatbot — AI Workplace" },

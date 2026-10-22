@@ -3,6 +3,7 @@ import { CalendarCheck } from "lucide-react";
 import { ToolPage } from "@/components/ToolPage";
 
 export const Route = createFileRoute("/task-planner")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "AI Task Planner — AI Workplace" },

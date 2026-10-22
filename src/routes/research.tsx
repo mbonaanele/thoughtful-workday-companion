@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import { ToolPage } from "@/components/ToolPage";
 
 export const Route = createFileRoute("/research")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "AI Research Assistant — AI Workplace" },
