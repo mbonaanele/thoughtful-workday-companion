@@ -3,6 +3,7 @@ import { ArrowRight, Flower2 } from "lucide-react";
 import { TOOLS } from "@/lib/tools";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Dashboard — AI Workplace Productivity Assistant" },

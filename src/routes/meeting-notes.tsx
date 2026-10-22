@@ -3,6 +3,7 @@ import { NotebookPen } from "lucide-react";
 import { ToolPage } from "@/components/ToolPage";
 
 export const Route = createFileRoute("/meeting-notes")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Meeting Notes Summarizer — AI Workplace" },
