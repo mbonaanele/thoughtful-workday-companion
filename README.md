@@ -17,7 +17,7 @@ The application includes the following tools (navigable via the sidebar):
 ##  How to Access and Use
 **Live Application:**
 You can view and interact with the fully functional live app here: 
-**https://thoughtful-workday-companion.lovable.app**
+**https://anele-mbona.lovable.app**
 
 
 ## Responsible AI Practices
